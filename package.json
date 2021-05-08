@@ -16,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/mrarcher2000/the-tech-blog/issues"
   },
-  "homepage": "https://github.com/mrarcher2000/the-tech-blog#readme"
+  "homepage": "https://github.com/mrarcher2000/the-tech-blog#readme",
+  "dependencies": {
+    "connect-session": "0.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "path": "^0.12.7",
+    "sequelize": "^6.6.2",
+    "store": "^2.0.12"
+  }
 }
