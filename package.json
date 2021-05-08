@@ -1,0 +1,20 @@
+{
+  "name": "the-tech-blog",
+  "version": "1.0.0",
+  "description": "The go-to blog for everything tech related",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrarcher2000/the-tech-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrarcher2000/the-tech-blog/issues"
+  },
+  "homepage": "https://github.com/mrarcher2000/the-tech-blog#readme"
+}
