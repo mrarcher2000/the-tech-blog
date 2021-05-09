@@ -42,6 +42,22 @@ router.get('/', (req, res) => {
         });
 });
 
+//LOGIN PAGE
+router.get('/login', (req, res) => {
+    if(req.session.loggedIn) {
+        console.log('User already logged in!');
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
+});
+
+
+// // HOMEPAGE ROUTE
+// router.get('/home', (req, res) => {
+
+// })
 
 
 module.exports = router;

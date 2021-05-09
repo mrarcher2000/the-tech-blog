@@ -62,6 +62,9 @@ router.post('/', (req, res) => {
         .then(dbUserData => {
 
             // ** TO DO: ADD SESSION STORAGE HERE **
+            req.session.user_id = dbUserData.id;
+            req.session.username = dbUserData.username;
+            req.session.loggedIn = true;
 
             res.json(dbUserData);
         })
@@ -73,6 +76,47 @@ router.post('/', (req, res) => {
 
 
 // *** TO DO: ADD LOGIN AND LOGOUT ROUTES HERE ****
+router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(dbUserData => {
+            if(!dbUserData) {
+                res.status(400).json({ message: 'No user found! Check your information and try again '});
+                return;
+            }
+
+            const validPassword = dbUserData.checkPassword(req.body.password);
+
+            if (!validPassword) {
+                res.status(400).json({ message: 'Incorrect password!' });
+                return;
+            }
+
+
+            // if valid user and password, declare session variables
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id,
+                req.session.username = dbUserData.username,
+                req.session.loggedIn = true;
+
+                res.json({ user: dbUserData, message: 'Log in successful! Welcome back! '});
+            })
+        });
+});
+
+
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });
+    } else {
+        res.status(404).end();
+    }
+});
 
 
 // UPDATE USER INFO
