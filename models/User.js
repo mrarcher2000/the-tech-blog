@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 const bcrypt = require('bcrypt');
 
 
@@ -10,7 +10,7 @@ class User extends Model {
 }
 
 
-User.init(
+User.init (
     {
         id: {
             type: DataTypes.INTEGER,
@@ -53,9 +53,8 @@ User.init(
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             }
-        }
-    },
-    {
+        },
+
         sequelize,
         timestamps: false,
         freezeTableName: true,
