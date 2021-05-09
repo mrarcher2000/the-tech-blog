@@ -1,0 +1,8 @@
+ul.all-posts {
+    list-style-type: none;
+}
+
+.post {
+    text-decoration: none;
+    color: blue;
+}
