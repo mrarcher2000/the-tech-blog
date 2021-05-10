@@ -8,7 +8,7 @@ const { Post, User, Comment } = require('../models');
 // DASHBOARD ROUTE
 router.get('/', (req, res) => {
 
-    // console.log(req.session);
+    console.log(req.session);
 
     Post.findAll({
         attributes: [
@@ -34,7 +34,10 @@ router.get('/', (req, res) => {
     })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('dashboard', { posts });
+            res.render('dashboard', { 
+                posts,
+                loggedIn: req.session.loggedIn
+            });
         })
         .catch(err => {
             console.log(err);
@@ -51,6 +54,16 @@ router.get('/login', (req, res) => {
     }
 
     res.render('login');
+});
+
+
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
 });
 
 
