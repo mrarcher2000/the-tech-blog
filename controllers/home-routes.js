@@ -72,7 +72,7 @@ router.get('/home', (req, res) => {
     if (req.session.loggedIn) {
         Post.findAll({
             where: {
-                id: req.session.user_id
+                user_id: req.session.user_id
             },
             attributes: [
                 'id',
@@ -186,6 +186,13 @@ router.get('/post/:id', (req, res) => {
 
 // NEW POST PAGE
 
+router.get('/newpost', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/login');
+        return;
+    }
 
+    res.render('newpost');
+});
 
 module.exports = router;
