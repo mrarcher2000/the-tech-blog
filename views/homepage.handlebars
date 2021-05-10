@@ -1,9 +1,16 @@
 
-
 <div class="container">
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-8">
+            {{#if loggedIn}}
+            <div class="border-bottom border-2">
+                <h2>Welcome back, {{username}}!</h2>
+                <br>
+                <h3 class="fw-lighter">My Posts</h3>
+            </div> 
+            <br>
+            {{/if}}
             {{#each posts}}
                 <div>
                     <article class="post">

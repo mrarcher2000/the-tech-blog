@@ -16,6 +16,7 @@ async function signupFormHandler(event) {
 
         if (response.ok) {
             console.log('User creation successful!');
+            document.location.replace('/home');
         } else {
             alert(response.statusText);
         }

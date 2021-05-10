@@ -4,5 +4,6 @@ ul.all-posts {
 
 .post {
     text-decoration: none;
-    color: blue;
+    color: black;
+    border-bottom: 2px solid lightgray;
 }
