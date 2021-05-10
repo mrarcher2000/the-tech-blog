@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-8">
+            <article class="fs-4">
+                <div class="post">
+                    <h2>{{post.title}}</h2>
+                    <br>
+                    <span class="fw-lighter">By {{post.user.username}} on {{post.created_at}}</span>
+                </div>
+                <br>
+                <div>
+                    {{post.post_text}}
+                </div>
+                <br>
+                <br>
+                <div class="post">
+                    {{#each post.comments}}
+                    <section class="post">
+                        <div class="fs-6">
+                            <span class="fw-bolder"></span>{{user.username}} on <span class="fw-lighter">{{created_at}}</span>
+                        </div>
+                        <div class="fs-5">
+                            {{comment_text}}
+                        </div>
+                    </section>
+                    <br>
+                    {{/each}}
+                </div>
+                <br>
+                
+                <div>
+                    <h5>Leave a comment below!</h5>
+                    <br>
+                    {{#if loggedIn}}
+                    <form id="comment-form">
+                        <div>
+                            <textarea class="form-control" id="comment-text" placeholder="Leave a comment"></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-primary mb-3">Add Comment</button>
+                        </div>
+                    </form>
+
+                    {{else}}
+                        <div>
+                            <a href="/login">Login</a> to be able to add a comment!
+                        </div>
+
+                    {{/if}}
+                </div>
+
+            </article>  
+        </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<script src="/javascript/comment.js"></script>
